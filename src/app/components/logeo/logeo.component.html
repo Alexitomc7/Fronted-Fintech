@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="left-half">
+    <h2>BIENVENIDO</h2>
+    <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    <p>VOCATIONAL FINTER</p>
+  </div>
+
+  <div class="right-half">
+    <h2>Iniciar sesión</h2>
+    <form [formGroup]="logeoForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="userName">
+        <span style="color: red;" *ngIf="logeoForm.get('userName')?.hasError('minlength') && logeoForm.get('userName')?.touched">Debe tener un mínimo de 5 caracteres</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="muestraPassword ? 'text' : 'password'">
+        <button mat-icon-button matSuffix (click)="muestraPassword=!muestraPassword">
+          <mat-icon>{{ muestraPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <span style="color: red;" *ngIf="logeoForm.get('password')?.hasError('minlength') && logeoForm.get('password')?.touched">Debe tener un mínimo de 5 caracteres</span>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="logearUsuario()" [disabled]="logeoForm.invalid">Ingresar</button>
+    </form>
+  </div>
+</div>

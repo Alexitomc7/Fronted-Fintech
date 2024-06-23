@@ -1,0 +1,28 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="drawer">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter" alt="Logo">
+    </div>
+    <button mat-button (click)="changeContent('Perfil')">Perfil</button>
+    <button mat-button (click)="changeContent('Universidades')">Universidades</button>
+    <button mat-button (click)="changeContent('Carreras')">Carreras</button>
+    <button mat-button (click)="changeContent('Noticias')">Noticias</button>
+  </mat-drawer>
+  <mat-drawer-content class="main-content">
+    <div *ngIf="currentContent === 'Perfil'">
+      <h1>Perfil</h1>
+    </div>
+    <div *ngIf="currentContent === 'Universidades'">
+      <h1>Universidades</h1>
+      <p>Contenido de Universidades...</p>
+    </div>
+    <div *ngIf="currentContent === 'Carreras'">
+      <h1>Carreras</h1>
+      <p>Contenido de Carreras...</p>
+    </div>
+    <div *ngIf="currentContent === 'Noticias'">
+      <h1>Noticias</h1>
+      <p>Contenido de Noticias...</p>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

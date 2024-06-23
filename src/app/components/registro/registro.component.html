@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="left-half">
+    <h2>BIENVENIDO</h2>
+    <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    <p>VOCATIONAL FINTER</p>
+  </div>
+  <div class="right-half">
+    <h2>Regístrate</h2>
+    <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="userName">                
+        <span style="color: red;" *ngIf="registroForm.get('userName')?.hasError('minlength') && registroForm.get('userName')?.touched">Debe tener un mínimo de 5 caracteres</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password">
+        <span style="color: red;" *ngIf="registroForm.get('password')?.hasError('minlength') && registroForm.get('password')?.touched">Debe tener un mínimo de 5 caracteres</span>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="registroForm.invalid">Registrar</button>
+    </form>
+
+    <div>
+      <button mat-flat-button color="accent" routerLink="/logeo">Ya tengo un usuario</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,254 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+}
+
+.header .logo img {
+  height: 50px;
+  width: 50px;
+}
+
+.header .nav a {
+  margin: 0 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.header .nav a:hover {
+  text-decoration: underline;
+}
+
+.header .auth-buttons button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header .auth-buttons .register {
+  background-color: #205896;
+  color: white;
+}
+
+.header .auth-buttons .login {
+  background-color: #205896;
+  color: white;
+}
+
+ 
+/* Estilo general para la sección */
+.section.vocational {
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+  height: 100vh;
+  background-color: #c4d2e7; 
+}
+
+/* Estilo para el contenedor de texto */
+.section.vocational .text {
+  flex: 0 0 35%; /* Ocupa el 25% del ancho */
+  padding: 20px; /* Añadir un poco de relleno */
+  box-sizing: border-box; /* Incluir el relleno en el ancho total */
+}
+
+/* Estilo para el contenedor de la imagen */
+.section.vocational .image {
+  flex: 0 0 65%; /* Ocupa el 75% del ancho */
+  height: 100%; /* Asegurarse de que la imagen ocupe toda la altura del contenedor */
+}
+
+.section.vocational .image img {
+  width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho del contenedor */
+  height: 100%; /* Asegurarse de que la imagen ocupe toda la altura del contenedor */
+  object-fit: cover; /* Asegurarse de que la imagen cubra el contenedor sin distorsionarse */
+}
+
+/* Estilo general para la sección */
+.section.somos {
+  display: grid;
+  grid-template-rows: auto 1fr; /* Dos filas: una para el texto y otra para las imágenes */
+  gap: 10px; /* Espacio entre filas */
+  justify-items: center; /* Centrar elementos horizontalmente */
+  padding: 20px;
+  box-sizing: border-box;
+  height: 50vh; 
+}
+
+/* Estilo para el contenedor de texto */
+.section.somos .content {
+  text-align: left; /* Alinear el texto a la izquierda */
+  width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho */
+  max-width: 800px; /* Limitar el ancho máximo */
+}
+
+/* Estilo para el contenedor de las imágenes */
+.section.somos .images {
+  display: flex;
+  gap: 180px; /* Espacio entre las imágenes */
+  justify-content: center; /* Centrar las imágenes horizontalmente */
+  width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho */
+  max-width: 800px; /* Limitar el ancho máximo */
+}
+
+/* Estilo para las imágenes */
+.section.somos .images img {
+  width: 100%;
+  max-width:200px; /* Limitar el ancho máximo de cada imagen */
+  height: auto; /* Mantener la proporción de la imagen */
+}
+
+/* Estilo general para la sección */
+.section.universidades {
+  text-align: left; /* Alinear el texto a la izquierda */
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh; /* Asegurarse de que la sección ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo para el contenedor de la información */
+.section.universidades > h2,
+.section.universidades > p {
+  width: 100%;
+  max-width: 800px; /* Limitar el ancho máximo */
+}
+
+/* Estilo para el contenedor del slider */
+.section.universidades .slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Estilo para los botones del slider */
+.section.universidades .slider-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Estilo para el contenedor de los logos */
+.section.universidades .logos {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Estilo para cada ítem del logo */
+.section.universidades .logo-item {
+  text-align: center;
+  flex: 1;
+}
+
+/* Estilo para las imágenes */
+.section.universidades .logo-item img {
+  width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho del contenedor */
+  height: 200px; /* Establecer una altura fija para las imágenes */
+  object-fit: contain; /* Mantener la proporción de la imagen sin distorsionar */
+  margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+.section.carreras {
+  text-align: left;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #c4d2e7; /* Fondo azul */
+}
+
+.section.carreras > h2,
+.section.carreras > p {
+  width: 100%;
+  max-width: 800px;
+}
+
+.section.carreras .slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.section.carreras .slider-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.section.carreras .logos {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.section.carreras .logo-item {
+  text-align: center;
+  flex: 1;
+}
+
+.section.carreras .logo-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+/* Estilo para la sección baja */
+.section.baja {
+  background-color: #205896; /* Fondo azul */
+  color: white; /* Texto blanco */
+  padding: 20px;
+  box-sizing: border-box;
+  height: auto;
+  text-align: left;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.logo-column img {
+  width: 100%;
+  max-width: 150px; /* Ajusta el tamaño del logo según sea necesario */
+  margin: 0 auto;
+  display: block;
+}
+
+.about-column h3, 
+.contact-column h3 {
+  margin-bottom: 10px;
+}
+
+.about-column a, 
+.contact-column a {
+  display: block;
+  color: white; /* Texto blanco */
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.contact-column p {
+  margin: 5px 0;
+}
+
+.contact-column a:hover {
+  text-decoration: underline; /* Subrayar los enlaces al pasar el ratón */
+}
