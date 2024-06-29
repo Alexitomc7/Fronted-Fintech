@@ -14,6 +14,8 @@ export class Proteccion2Guard {
    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return (this.usuarioService.getAuthorities()!.indexOf("ROLE_STUDENT")>=0
             ||
+            this.usuarioService.getAuthorities()!.indexOf("ROLE_UNIVERSITARIO")>=0
+            ||
             this.usuarioService.getAuthorities()!.indexOf("ROLE_ADMIN")>=0
           );  
   };

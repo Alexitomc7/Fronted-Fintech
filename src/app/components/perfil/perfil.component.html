@@ -1,0 +1,48 @@
+<div class="estudiante-container">
+  <div class="menu">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    </div>
+    <!-- Botones del menú -->
+    <button mat-button class="inicio" routerLink="/inicio">Inicio</button>
+    <button mat-button class="perfil" routerLink="/perfil">Perfil</button>
+    <button mat-button class="universidades" routerLink="/universidades/lista">Universidades</button>
+    <button mat-button class="carreras" routerLink="/carreras/lista">Carreras</button>
+    <button mat-button class="noticias" routerLink="/noticias/lista">Noticias</button>
+  </div>
+  
+  <div class="main-content">
+    <div class="header-bar">Perfil</div>
+    <div class="perfil-container">
+      <mat-card class="perfil-card">
+        <mat-card-header>
+          <mat-card-title>{{ estudiante?.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ estudiante?.apellido }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      
+      <mat-card class="datos-card">
+        <mat-card-content>
+          <p>DNI: {{ estudiante?.dni }}</p>
+          <p>Nacimiento: {{ estudiante?.nacimiento }}</p>
+          <p>Sexo: {{ estudiante?.sexo }}</p>
+          <p>Correo Electrónico: {{ estudiante?.correo }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="/perfil/editor">Editar Perfil</button> 
+        </mat-card-actions>
+      </mat-card>
+      
+      <mat-card class="favoritos-card">
+        <mat-card-header>
+          <mat-card-title>Favoritos</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <button mat-button class="Admin" routerLink="/universidades/editor">Modo Editor</button>
+    </div>
+  </div>
+</div>
+
+
+
+  

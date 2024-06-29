@@ -1,78 +1,49 @@
-<h2>Lista de universidades</h2>
-
-<mat-form-field>
-    <mat-label>Filtro</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Escriba algún filtro" #input>
-  </mat-form-field>
-<span> | </span>
-  <button mat-flat-button color="accent" routerLink="/Universidad/detalle">Agregar Universidad</button>
-
-
-<table mat-table [dataSource]="dsLista" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element"  > {{element.id}} </td>
-    </ng-container>
+<div class="universidad-container">
+  <div class="menu">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    </div>
+    <!-- Botones del menú -->
+    <button mat-button class="inicio" routerLink="/inicio">Inicio</button>
+    <button mat-button class="perfil" routerLink="/perfil">Perfil</button>
+    <button mat-button class="universidades" routerLink="/universidades/lista">Universidades</button>
+    <button mat-button class="carreras" routerLink="/carreras/lista">Carreras</button>
+    <button mat-button class="noticias" routerLink="/noticias/lista">Noticias</button>
+  </div>
   
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
- 
-    <ng-container matColumnDef="direccion">
-      <th mat-header-cell *matHeaderCellDef> Direccion </th>
-      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="paginaweb">
-      <th mat-header-cell *matHeaderCellDef> Pagina Web </th>
-      <td mat-cell *matCellDef="let element"> {{element.paginaweb}} </td>
-    </ng-container>
+  <div class="main-content">
+    <div class="header-bar">Universidades</div>
+    <div class="search-filter">
+      <mat-form-field>
+        <input matInput placeholder="Buscar universidad" [(ngModel)]="searchText" (ngModelChange)="applyFilter()">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Tipo" [(value)]="filterType" (selectionChange)="applyFilter()">
+          <mat-option value="">Todos</mat-option>
+          <mat-option value="Publica">Pública</mat-option>
+          <mat-option value="Privada">Privada</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="universidades-list">
+      <mat-card class="universidades-card" appearance="outlined" *ngFor="let universidad of filteredUniversidades">
+        <mat-card-header>
+          <mat-card-title>{{ universidad.nombre }}</mat-card-title>
+          <mat-card-subtitle>Ranking: {{ universidad.ranking }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ universidad.resumen }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button routerLink="/universidades/ver/{{universidad.id}}">Ver</button> 
+        </mat-card-actions>
+      </mat-card>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="telefono">
-      <th mat-header-cell *matHeaderCellDef> Telefono </th>
-      <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ubicacion">
-      <th mat-header-cell *matHeaderCellDef> Ubicacion </th>
-      <td mat-cell *matCellDef="let element"> {{element.ubicacion}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="tipo">
-      <th mat-header-cell *matHeaderCellDef> Tipo </th>
-      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ranking">
-      <th mat-header-cell *matHeaderCellDef> Ranking </th>
-      <td mat-cell *matCellDef="let element"> {{element.ranking}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="fundacion">
-      <th mat-header-cell *matHeaderCellDef> Fundacion </th>
-      <td mat-cell *matCellDef="let element"> {{element.fundacion}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="rector">
-      <th mat-header-cell *matHeaderCellDef> Rector </th>
-      <td mat-cell *matCellDef="let element"> {{element.rector}} </td>
-    </ng-container>
-
-
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
 

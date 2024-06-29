@@ -1,53 +1,74 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrl: './registro.component.css'
+  styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
-  tipoUsuario:string="ROLE_STUDENT";
-  registroForm!:FormGroup;
- 
+export class RegistroComponent implements OnInit {
+  tipoUsuario: string = "ROLE_STUDENT";
+  registroForm!: FormGroup;
 
-  constructor (private ruta:ActivatedRoute, private usuarioService:UsuarioService,
-    private formBuilder:FormBuilder, private enrutador:Router, 
-    private _snackBar: MatSnackBar) {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private formBuilder: FormBuilder,
+    private enrutador: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.crearRegistroForm();
   }
 
-  crearRegistroForm(){
+  crearRegistroForm(): void {
     this.registroForm = this.formBuilder.group({
-      userName:["",[Validators.minLength(5),Validators.required]],
-      password:["",[Validators.minLength(5),Validators.required]]
-    })
+      userName: ["", [Validators.minLength(5), Validators.required]],
+      password: ["", [Validators.minLength(5), Validators.required]],
+      nombre: ["", Validators.required], // EstudianteDTO fields
+      apellido: ["", Validators.required],
+      dni: ["", Validators.required],
+      nacimiento: ["", Validators.required],
+      sexo: ["", Validators.required],
+      correo: ["", Validators.required],
+      estudianteSecundaria: [false, Validators.required]
+    });
   }
 
-  registrarUsuario(){
-    const usuario:Usuario={
-      id:0,
-      userName:this.registroForm.get("userName")!.value,
-      password:this.registroForm.get("password")!.value,
-      type: this.tipoUsuario
+  registrarUsuario(): void {
+    const usuario: Usuario = {
+      id: 0,
+      userName: this.registroForm.get("userName")!.value,
+      password: this.registroForm.get("password")!.value,
+      type: this.tipoUsuario,
+      estudianteDTO: {
+        id: 0,
+        nombre: this.registroForm.get("nombre")!.value,
+        apellido: this.registroForm.get("apellido")!.value,
+        dni: this.registroForm.get("dni")!.value,
+        nacimiento: this.registroForm.get("nacimiento")!.value,
+        sexo: this.registroForm.get("sexo")!.value,
+        correo: this.registroForm.get("correo")!.value,
+        estudianteSecundaria: this.registroForm.get("estudianteSecundaria")!.value
+      }
     };
 
     this.usuarioService.registraUsuario(usuario).subscribe({
-      next:(data)=>{
-        this.enrutador.navigate(["/"])
-        this._snackBar.open("El usuario se registro con exito!","OK",{duration:2000});
+      next: (data) => {
+        this.usuarioService.logearUsuario(usuario).subscribe(() => {
+          this.enrutador.navigate(["/perfil"]);
+          this._snackBar.open("El usuario se registró con éxito!", "OK", { duration: 2000 });
+        });
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
-        this._snackBar.open("No se registro usuario: "+err.error.message,"OK",{duration:3000});
-
+        this._snackBar.open("No se registró el usuario: " + err.error.message, "OK", { duration: 3000 });
       }
-    })
+    });
   }
 }
+

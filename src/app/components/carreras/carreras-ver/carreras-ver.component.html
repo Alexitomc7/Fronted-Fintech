@@ -1,0 +1,41 @@
+<div class="carreras-container">
+    <div class="menu">
+      <div class="logo">
+        <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+      </div>
+      <!-- Botones del menú -->
+      <button mat-button class="inicio" routerLink="/inicio">Inicio</button>
+      <button mat-button class="perfil" routerLink="/perfil">Perfil</button>
+      <button mat-button class="universidades" routerLink="/universidaes/lista">Universidades</button>
+      <button mat-button class="carreras" routerLink="/carreras/lista">Carreras</button>
+      <button mat-button class="noticias" routerLink="/noticias/lista">Noticias</button>
+    </div>
+    
+    <div class="main-content">
+        <div class="header-bar">
+            <span>{{ carrera?.nombre }}</span>   
+          </div>
+          <div class="Foto-Carrera">
+            <img [src]="carrera?.photoCareer" alt="Carrera" class="imagen1">
+          </div>
+          <div class="profesional">
+            <img [src]="carrera?.photoProfesional" alt="Profesional" class="imagen2">
+          </div>
+          <div class="descripcion">
+            <p>{{ carrera?.description }}</p>
+          </div>
+          <div class="datos-card">
+            <mat-card class="datos-card-content">
+              <mat-card-title>Datos:</mat-card-title>
+              <mat-card-content>
+                <div class="datos-column">
+                  <p><strong>Duración:</strong> {{ carrera?.duracion}}</p>
+                  <p><strong>Modalidad:</strong> {{ carrera?.modalidad }}</p>
+                  <p><strong>Facultad:</strong> {{ carrera?.facultad }}</p>
+                  <p><strong>Universidad:</strong> {{ carrera?.universidad }}</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+    </div>
+  </div>

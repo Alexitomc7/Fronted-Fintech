@@ -14,7 +14,10 @@ import { CommonModule } from '@angular/common';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule} from '@angular/material/sidenav';
-
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 
@@ -37,7 +40,11 @@ import { MatSidenavModule} from '@angular/material/sidenav';
   MatOptionModule,
   MatCheckboxModule,
   MatSelectModule,
-  MatSidenavModule
+  MatSidenavModule,
+  FormsModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  BrowserAnimationsModule
 
  ],
 
@@ -57,7 +64,8 @@ import { MatSidenavModule} from '@angular/material/sidenav';
   MatOptionModule,
   MatCheckboxModule,
   MatSelectModule,
-  MatSidenavModule
+  MatSidenavModule,
+  FormsModule
 
  ]
 

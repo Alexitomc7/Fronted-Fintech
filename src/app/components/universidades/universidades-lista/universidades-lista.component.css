@@ -1,0 +1,89 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.universidad-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.menu {
+  width: 15%;
+  background-color: #205896;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.menu .logo {
+  width: 100%;
+  text-align: center;
+}
+
+.menu .logo img {
+  width: 80%;
+  max-width: 80px;
+  margin-bottom: 20px;
+}
+
+.menu button {
+  width: 100%;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.menu .universidades {
+  background-color: #1E88E5;
+}
+
+.menu button:hover {
+  background-color: #1E88E5;
+}
+
+.main-content {
+  width: 85%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.header-bar {
+  width: 100%;
+  background-color: #205896;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+.search-filter {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.universidades-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.universidades-card {
+  width: 90%;
+  height: 200px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+  

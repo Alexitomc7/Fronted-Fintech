@@ -7,17 +7,57 @@
   <div class="right-half">
     <h2>Regístrate</h2>
     <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
-      <mat-form-field appearance="fill">
-        <mat-label>Usuario</mat-label>
-        <input matInput formControlName="userName">                
-        <span style="color: red;" *ngIf="registroForm.get('userName')?.hasError('minlength') && registroForm.get('userName')?.touched">Debe tener un mínimo de 5 caracteres</span>
-      </mat-form-field>
+      <div class="form-grid">
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="userName">
+          <span style="color: red;" *ngIf="registroForm.get('userName')?.hasError('minlength') && registroForm.get('userName')?.touched">Debe tener un mínimo de 5 caracteres</span>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" type="password">
-        <span style="color: red;" *ngIf="registroForm.get('password')?.hasError('minlength') && registroForm.get('password')?.touched">Debe tener un mínimo de 5 caracteres</span>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+          <span style="color: red;" *ngIf="registroForm.get('password')?.hasError('minlength') && registroForm.get('password')?.touched">Debe tener un mínimo de 5 caracteres</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+          <span style="color: red;" *ngIf="registroForm.get('nombre')?.hasError('required') && registroForm.get('nombre')?.touched">Campo requerido</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido">
+          <span style="color: red;" *ngIf="registroForm.get('apellido')?.hasError('required') && registroForm.get('apellido')?.touched">Campo requerido</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>DNI</mat-label>
+          <input matInput formControlName="dni">
+          <span style="color: red;" *ngIf="registroForm.get('dni')?.hasError('required') && registroForm.get('dni')?.touched">Campo requerido</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput formControlName="nacimiento" type="date">
+          <span style="color: red;" *ngIf="registroForm.get('nacimiento')?.hasError('required') && registroForm.get('nacimiento')?.touched">Campo requerido</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Sexo</mat-label>
+          <input matInput formControlName="sexo">
+          <span style="color: red;" *ngIf="registroForm.get('sexo')?.hasError('required') && registroForm.get('sexo')?.touched">Campo requerido</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="correo">
+          <span style="color: red;" *ngIf="registroForm.get('correo')?.hasError('required') && registroForm.get('correo')?.touched">Campo requerido</span>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="estudianteSecundaria">Estudiante de secundaria</mat-checkbox>
+      </div>
 
       <button mat-flat-button color="primary" type="submit" [disabled]="registroForm.invalid">Registrar</button>
     </form>

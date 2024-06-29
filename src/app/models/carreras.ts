@@ -5,4 +5,8 @@ export interface Carreras {
     modalidad:string;
     universidad:string;
     facultad:string;
+    description:string;
+    summary:string;
+    photoCareer:any;
+    photoProfesional:any;
 }

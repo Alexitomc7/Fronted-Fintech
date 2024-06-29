@@ -1,6 +1,9 @@
 export interface Universidades {
     id: number;
     nombre:string;
+    photoLogo:any;
+    photoFachada:any;
+    resumen:string;
     direccion: string;
     paginaweb: string;
     email: string;

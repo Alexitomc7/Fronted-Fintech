@@ -20,6 +20,23 @@ import { proteccion1Guard } from './guards/proteccion1.guard';
 import { Proteccion2Guard } from './guards/proteccion2.guard';
 import { Proteccion3Guard } from './guards/proteccion3.guard';
 import { AutorizadorInterceptor } from './interceptors/autorizador.interceptor';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { NoticiasListaComponent } from './components/noticias/noticias-lista/noticias-lista.component';
+import { UniversidadesVerComponent } from './components/universidades/universidades-ver/universidades-ver.component';
+import { UniversidadesEditorComponent } from './components/universidades/universidades-editor/universidades-editor.component';
+import { ConfirmaComponent } from './components/confirma/confirma.component';
+import { NoticiasEditorComponent } from './components/noticias/noticias-editor/noticias-editor.component';
+import { NoticiasDetalleComponent } from './components/noticias/noticias-detalle/noticias-detalle.component';
+import { CarrerasVerComponent } from './components/carreras/carreras-ver/carreras-ver.component';
+import { CarrerasEditorComponent } from './components/carreras/carreras-editor/carreras-editor.component';
+import { PerfilEditorComponent } from './components/perfil/perfil-editor/perfil-editor.component';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -31,8 +48,17 @@ import { AutorizadorInterceptor } from './interceptors/autorizador.interceptor';
     UniversidadesListaComponent,
     UniversidadesDetalleComponent,
     CarrerasListaComponent,
-    CarrerasDetalleComponent
-
+    CarrerasDetalleComponent,
+    PerfilComponent,
+    NoticiasListaComponent,
+    UniversidadesVerComponent,
+    UniversidadesEditorComponent,
+    ConfirmaComponent,
+    NoticiasEditorComponent,
+    NoticiasDetalleComponent,
+    CarrerasVerComponent,
+    CarrerasEditorComponent,
+    PerfilEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +66,18 @@ import { AutorizadorInterceptor } from './interceptors/autorizador.interceptor';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule
+
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
     provideAnimationsAsync('noop'),
+    DatePipe,
     proteccion1Guard,
     Proteccion2Guard,
     Proteccion3Guard,
@@ -57,3 +89,4 @@ import { AutorizadorInterceptor } from './interceptors/autorizador.interceptor';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

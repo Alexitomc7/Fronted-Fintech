@@ -1,0 +1,74 @@
+<div class="admin-container">
+  <div class="menu">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    </div>
+    <div class="menu-buttons">
+      <!-- Botones del menú -->
+      <button mat-button class="Admin" routerLink="/universidades/editor">Universidades</button>
+      <button mat-button class="Admin" routerLink="/carreras/editor">Carreras</button>
+      <button mat-button class="Admin" routerLink="/noticias/editor">Noticias</button>
+<button mat-button class="Admin" routerLink="/noticias/editor">Volver</button>
+    </div>
+    <div class="Modo">Modo Editor</div>
+  </div>
+  <div class="main-content">
+    <h2>Detalle de la Noticia</h2>
+
+<span *ngIf="noExiste">La noticia con el codigo {{idNoticias}} no existe </span>
+
+
+<form [formGroup]="detalleForm" *ngIf="!noExiste">
+
+    <mat-form-field appearance="fill" >
+        <mat-label>Id de la noticia</mat-label>
+        <input matInput formControlName="idNoti" readonly="true">                
+      </mat-form-field>
+
+      <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input matInput formControlName="tituloNoti" >
+        <span style="color: red;" *ngIf="detalleForm.get('tituloNoti')?.hasError('minlength') && detalleForm.get('tituloNoti')?.touched">Debe tener un minimo de 5 caracteres</span>
+      </mat-form-field>
+      <br>
+      <div>
+        <mat-label>Foto</mat-label>
+        <br>
+        <span>Elegir una foto....</span>
+        <input type="file" accept="image/png image/jpeg" (change)="seleccionaFotoImage($event)">
+      </div>
+      <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Contenido</mat-label>
+        <input matInput formControlName="contenidoNoti" >                
+        <span style="color: red;" *ngIf="detalleForm.get('contenidoNoti')?.hasError('minlength') && detalleForm.get('contenidoNoti')?.touched">Debe tener un minimo de 5 caracteres</span>
+
+      </mat-form-field>
+      <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input matInput formControlName="fechaNoti" >                
+        <span style="color: red;" *ngIf="detalleForm.get('fechaNoti')?.hasError('min') && detalleForm.get('fechaNoti')?.touched">Debe ser mayor a 0</span>
+
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <input matInput formControlName="tipoNoti" >                
+          <span style="color: red;" *ngIf="detalleForm.get('tipoNoti')?.hasError('min') && detalleForm.get('tipoNoti')?.touched">Debe tener un minimo de 3 caracteres</span>
+  
+        </mat-form-field>
+      
+
+</form>
+
+<br>
+<button *ngIf="!noExiste" mat-flat-button color="primary" (click)="grabarNoticias()" [disabled]="detalleForm.invalid">
+  Grabar
+</button>     
+<span *ngIf="!noExiste"> | </span>       
+<button mat-flat-button color="accent" routerLink="/noticias/lista">Cancelar</button>
+
+  </div>
+</div>

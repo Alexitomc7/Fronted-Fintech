@@ -1,28 +1,78 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened class="drawer">
+<div class="inicio-container">
+  <div class="menu">
     <div class="logo">
-      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter" alt="Logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
     </div>
-    <button mat-button (click)="changeContent('Perfil')">Perfil</button>
-    <button mat-button (click)="changeContent('Universidades')">Universidades</button>
-    <button mat-button (click)="changeContent('Carreras')">Carreras</button>
-    <button mat-button (click)="changeContent('Noticias')">Noticias</button>
-  </mat-drawer>
-  <mat-drawer-content class="main-content">
-    <div *ngIf="currentContent === 'Perfil'">
-      <h1>Perfil</h1>
-    </div>
-    <div *ngIf="currentContent === 'Universidades'">
-      <h1>Universidades</h1>
-      <p>Contenido de Universidades...</p>
-    </div>
-    <div *ngIf="currentContent === 'Carreras'">
-      <h1>Carreras</h1>
-      <p>Contenido de Carreras...</p>
-    </div>
-    <div *ngIf="currentContent === 'Noticias'">
-      <h1>Noticias</h1>
-      <p>Contenido de Noticias...</p>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+    <!-- Botones del menú -->
+    <button mat-button class="inicio" routerLink="/inicio">Inicio</button>
+    <button mat-button class="perfil" routerLink="/perfil">Perfil</button>
+    <button mat-button class="universidades" routerLink="/universidades/lista">Universidades</button>
+    <button mat-button class="carreras" routerLink="/carreras/lista">Carreras</button>
+    <button mat-button class="noticias" routerLink="/noticias/lista">Noticias</button>
+<button mat-flat-button color="warn" (click)="logout()" *ngIf="hayUsuarioLogeado()" class="logout">Cerrar Sesión</button>
+  </div>
+  
+  <div class="main-content">
+    <div class="header-bar">Inicio</div>
+    <section class="about-us">
+      <h2>¿Quiénes somos?</h2>
+      <h2>Somos un grupo apasionado de estudiantes de Ingeniería de Sistemas de Información de la UPC. Nuestra misión es brindar recursos educativos y apoyo a estudiantes de secundaria y universitarios.</h2>
+      <div class="team-members">
+          <div class="member">
+              <img src="https://img.pica-ai.com/image/aigc/alg%26upscale%26p%269858d7e82638b3c1c259f8e5b536b673_2048_3640.webp" width="200" height="250" alt="Alvaro">
+              <p>Alvaro</p>
+              <p> Programador Frontend</p>
+          </div>
+          <div class="member">
+            <img src="https://img.pica-ai.com/image/aigc/alg%26upscale%26p%2697067c66412c526603e5aa435f5c8168_1712_2096.webp" width="200" height="250" alt="Jose">
+              <p>Jose</p>
+              <p> Programador Frontend</p>
+          </div>
+          <div class="member">
+            <img src="https://img.pica-ai.com/image/aigc/alg%26upscale%26p%26bf8c811ce2a70fca88cfb282bdc6e680_1483_1744.webp" width="200" height="250" alt="Alex">
+              <p>Alex</p>
+              <p> Programador Frontend y Backend</p>
+          </div>
+          <div class="member">
+            <img src="https://img.pica-ai.com/image/aigc/alg%26upscale%26p%26f539050e4661844e76a548161f07734b_1844_1677.webp" width="200" height="250" alt="Nelson">
+              <p>Nelson</p>
+              <p> Tester</p>
+          </div>
+          <div class="member">
+            <img src="https://img.pica-ai.com/image/aigc/alg%26upscale%26p%26421b2b5b07288454468b643ff5b0bf19_1741_1744.webp" width="200" height="250" alt="Carlos">
+              <p>Carlos</p>
+              <p> Programador Backend</p>
+          </div>
+      </div>
+    </section>
+
+    <section class="vocational-finter">
+      <h2>VocationalFinter</h2>
+      <p>
+          Elaboramos VocationalFinter para brindar una biblioteca completa a todos los alumnos que buscan información sobre universidades y carreras en todo el Perú.
+      </p>
+      <div class="features">
+          <div class="feature">
+              <img src="https://th.bing.com/th/id/R.a59443bf73614a81f4e4185e59764d54?rik=Mag12qkXDlb3RQ&riu=http%3a%2f%2feducacionalfuturo.com%2fwp-content%2fuploads%2f2013%2f06%2fEstudiantes_universitarios.jpg&ehk=BODtDV7fae1UOOBVzPNRWU6fQI1rjOQ8srWwgvEcmgA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" width="400" height="300" alt="Universidades">
+              <p>Universidades</p>
+          </div>
+          <div class="feature">
+              <img src="https://estudioenperu.com/wp-content/uploads/2023/07/Carrera-de-derecho-en-Peru.jpg" width="400" height="300" alt="Carreras">
+              <p>Carreras</p>
+          </div>
+          <div class="feature">
+              <img src="https://png.pngtree.com/png-vector/20240510/ourlarge/pngtree-business-people-reading-business-newspaper-at-outdoor-profession-student-university-png-image_12393579.png" width="400" height="300" alt="Noticias">
+              <p>Noticias</p>
+          </div>
+      </div>
+    </section>
+
+  <section class="find-your-path">
+      <h2>Encuentra tu camino</h2>
+      <p>Esperamos que encuentres la carrera que buscas en la universidad de tu agrado.</p>
+      <div class="camino">
+      <img src="https://res.cloudinary.com/upcbinary/image/upload/q_auto:good/v1573493355/pregrado/imagenes/OG/facultad-de-ingenieria.jpg" width="700" height="450" alt="Camino">
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="universidad-container" *ngIf="universidad">
+  <div class="menu">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    </div>
+    <!-- Botones del menú -->
+    <button mat-button class="inicio" routerLink="/inicio">Inicio</button>
+    <button mat-button class="perfil" routerLink="/perfil">Perfil</button>
+    <button mat-button class="universidades" routerLink="/universidades/lista">Universidades</button>
+    <button mat-button class="carreras" routerLink="/carreras/lista">Carreras</button>
+    <button mat-button class="noticias" routerLink="/noticias/lista">Noticias</button>
+  </div>
+
+  <div class="main-content">
+    <div class="header-bar">
+      <span>{{ universidad.nombre }}</span>
+      <img *ngIf="universidad.photoLogo" [src]="universidad.photoLogo" width="50" height="50">
+    </div>
+    <div class="portada">
+      <img *ngIf="universidad.photoFachada" [src]="universidad.photoFachada" width="600" height="450">
+    </div>
+    <div class="descripcion">
+      <p>{{ universidad.descripcion }}</p>
+    </div>
+    <div class="datos-card">
+      <mat-card class="datos-card-content">
+        <mat-card-title>Datos:</mat-card-title>
+        <mat-card-content>
+          <div class="datos-column1">
+            <p><strong>Ranking:</strong> {{ universidad.ranking }}</p>
+            <p><strong>Ubicación:</strong> {{ universidad.ubicacion }}</p>
+            <p><strong>Rector:</strong> {{ universidad.rector }}</p>
+            <p><strong>Página web:</strong> <a [href]="universidad.paginaweb" target="_blank">{{ universidad.paginaweb }}</a></p>
+          </div>
+          <div class="datos-column2">
+            <p><strong>Dirección:</strong> {{ universidad.direccion }}</p>
+            <p><strong>Teléfono:</strong> {{ universidad.telefono }}</p>
+            <p><strong>Email:</strong> {{ universidad.email }}</p>
+            <p><strong>Fundación:</strong> {{ universidad.fundacion | date }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+  
+  
+  
+  
+  
+  

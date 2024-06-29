@@ -1,1 +1,92 @@
-<p>carreras-detalle works!</p>
+<div class="admin-container">
+    <div class="menu">
+      <div class="logo">
+        <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+      </div>
+      <div class="menu-buttons">
+        <!-- Botones del menú -->
+        <button mat-button class="Admin" routerLink="/universidades/editor">Universidades</button>
+        <button mat-button class="Admin" routerLink="/carreras/editor">Carreras</button>
+        <button mat-button class="Admin" routerLink="/noticias/editor">Noticias</button>
+        <button mat-button class="Admin" routerLink="/carreras/editor">Volver</button>
+      </div>
+      <div class="Modo">Modo Editor</div>
+    </div>
+    <div class="main-content">
+        <h2>Detalle de la Carrera</h2>
+
+        <span *ngIf="noExiste">La carrera con el código {{idCarreras}} no existe.</span>
+        
+        <form [formGroup]="detalleForm" *ngIf="!noExiste">
+          <div class="form-container">
+            <div class="form-column">
+              <mat-form-field appearance="fill">
+                <mat-label>Id de la Carrera</mat-label>
+                <input matInput formControlName="id" readonly="true">
+              </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+                <span style="color: red;" *ngIf="detalleForm.get('nombre')?.hasError('minlength') && detalleForm.get('nombre')?.touched">Debe tener un mínimo de 5 caracteres</span>
+              </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Duración</mat-label>
+                <input matInput formControlName="duracion">
+              </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Modalidad</mat-label>
+                <input matInput formControlName="modalidad">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Descripcion</mat-label>
+                <input matInput formControlName="description">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Resumen</mat-label>
+                <input matInput formControlName="summary">
+              </mat-form-field>
+            </div>
+        
+            <div class="form-column">
+              <mat-form-field appearance="fill">
+                <mat-label>Universidad</mat-label>
+                <mat-select formControlName="universidad">
+                  <mat-option *ngFor="let universidad of universidades" [value]="universidad.id">{{ universidad.nombre }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Facultad</mat-label>
+                <input matInput formControlName="faculta">
+              </mat-form-field>
+        
+              <!-- Otros campos de formulario -->
+        
+              <div>
+                <mat-label>Foto Carrera</mat-label>
+                <br>
+                <span>Elegir una foto de la carrera...</span>
+                <input type="file" accept="image/png, image/jpeg" (change)="seleccionaFotoCareer($event)">
+              </div>
+        
+              <div>
+                <mat-label>Foto Profesional</mat-label>
+                <br>
+                <span>Elegir una foto profesional...</span>
+                <input type="file" accept="image/png, image/jpeg" (change)="seleccionaFotoProfesional($event)">
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-row">
+            <button mat-flat-button color="primary" (click)="grabarCarreras()" [disabled]="detalleForm.invalid">Grabar</button>
+            <span> | </span>
+            <button mat-flat-button color="accent" routerLink="/carreras/lista">Cancelar</button>
+          </div>
+        </form>
+  </div>

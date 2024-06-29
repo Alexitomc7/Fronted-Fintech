@@ -1,9 +1,17 @@
-.example-container {
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.inicio-container {
+  display: flex;
+  width: 100%;
   height: 100vh;
 }
 
-.drawer {
-  width: 10%;
+.menu {
+  width: 15%;
   background-color: #205896;
   color: white;
   display: flex;
@@ -13,20 +21,68 @@
   box-sizing: border-box;
 }
 
-.drawer .logo img {
+.menu .logo {
   width: 100%;
-  max-width: 100px;
+  text-align: center;
+}
+
+.menu .logo img {
+  width: 80%;
+  max-width: 80px;
   margin-bottom: 20px;
 }
 
-.drawer button {
+.menu button {
   width: 100%;
   color: white;
   margin-bottom: 10px;
 }
 
+.menu .inicio {
+  background-color: #1E88E5;
+}
+
+.menu button:hover {
+  background-color: #1E88E5;
+}
+
 .main-content {
+  width: 85%;
   padding: 20px;
   box-sizing: border-box;
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.header-bar {
+  width: 100%;
+  background-color: #205896;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+.team-members {
+  display: flex;
+  justify-content: space-between;
+}
+.camino {
+  text-align: center;
+}
+
+.member {
+  text-align: center;
+}
+
+/* Estilos para la sección "VocationalFinter" */
+
+.features {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feature {
+  text-align: center;
 }

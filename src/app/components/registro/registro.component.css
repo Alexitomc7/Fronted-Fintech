@@ -31,20 +31,20 @@ html, body {
   align-items: center;
   padding: 20px;
 }
-  
-  form {
-    width: 100%;
-    max-width: 300px; /* Ancho máximo del formulario */
-    margin-top: 20px;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  button[type="submit"], button[routerLink] {
-    width: 100%;
-    margin-top: 10px;
-  }
-  
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px; /* Ancho máximo del grid del formulario */
+}
+
+mat-form-field, mat-checkbox {
+  width: 100%;
+}
+
+button[type="submit"], button[routerLink] {
+  width: 100%;
+  margin-top: 10px;
+}

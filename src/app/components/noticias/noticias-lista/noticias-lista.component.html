@@ -1,0 +1,30 @@
+<div class="noticias-container">
+  <div class="menu">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    </div>
+    <!-- Botones del menú -->
+    <button mat-button class="inicio" routerLink="/inicio">Inicio</button>
+    <button mat-button class="perfil" routerLink="/perfil">Perfil</button>
+    <button mat-button class="universidades" routerLink="/universidades/lista">Universidades</button>
+    <button mat-button class="carreras" routerLink="/carreras/lista">Carreras</button>
+    <button mat-button class="noticias" routerLink="/noticias/lista">Noticias</button>
+  </div>
+  <div class="main-content">
+    <div class="header-bar">Noticias</div>
+    <div class="noticias-list">
+      <mat-card class="noticia-card" *ngFor="let noticia of noticias">
+        <mat-card-header>
+          <mat-card-title>{{ noticia.titulo }}</mat-card-title>
+          <mat-card-subtitle>{{ noticia.fecha | date }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="photo">
+          <img [src]="noticia.photoImage" alt="Imagen de la noticia" width="550" height="450">
+        </div>
+        <mat-card-content>
+          <p>{{ noticia.contenido }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

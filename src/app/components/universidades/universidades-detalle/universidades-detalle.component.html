@@ -1,1 +1,140 @@
-<p>universidades-detalle works!</p>
+<div class="admin-container">
+  <div class="menu">
+    <div class="logo">
+      <img src="https://cdn.freelogodesign.org/thumbs/0fd89e3a65f04e748cd6c1902342ebaf_200x200.png?v=638546381688927730" alt="Logo Vocational Finter">
+    </div>
+    <div class="menu-buttons">
+      <button mat-button class="Admin" routerLink="/universidades/editor">Universidades</button>
+      <button mat-button class="Admin" routerLink="/carreras/editor">Carreras</button>
+      <button mat-button class="Admin" routerLink="/noticias/editor">Noticias</button>
+<button mat-button class="Admin" routerLink="/universidades/editor">Volver</button>
+    </div>
+    <div class="Modo">Modo Editor</div>
+</div>
+
+<div class="main-content">
+    <h2>Detalle de la Universidad</h2>
+
+    <span *ngIf="noExiste">Universidad con el código {{idUniversidades}} no existe</span>
+    
+    <form [formGroup]="detalleForm" *ngIf="!noExiste">
+      <div class="form-container">
+        <div class="form-column">
+          <mat-form-field appearance="fill">
+            <mat-label>Id de la Universidad</mat-label>
+            <input matInput formControlName="idUni" readonly="true">
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombreUni">
+            <span class="error-message" *ngIf="detalleForm.get('nombreUni')?.hasError('minlength') && detalleForm.get('nombreUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="direccionUni">
+            <span class="error-message" *ngIf="detalleForm.get('direccionUni')?.hasError('minlength') && detalleForm.get('direccionUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Página web</mat-label>
+            <input matInput formControlName="paginawebUni">
+            <span class="error-message" *ngIf="detalleForm.get('paginawebUni')?.hasError('minlength') && detalleForm.get('paginawebUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="emailUni">
+            <span class="error-message" *ngIf="detalleForm.get('emailUni')?.hasError('minlength') && detalleForm.get('emailUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="telefonoUni">
+            <span class="error-message" *ngIf="detalleForm.get('telefonoUni')?.hasError('minlength') && detalleForm.get('telefonoUni')?.touched">Debe tener un mínimo de 9 dígitos</span>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-column">
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Ubicación</mat-label>
+            <input matInput formControlName="ubicacionUni">
+            <span class="error-message" *ngIf="detalleForm.get('ubicacionUni')?.hasError('minlength') && detalleForm.get('ubicacionUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo</mat-label>
+            <input matInput formControlName="tipoUni">
+            <span class="error-message" *ngIf="detalleForm.get('tipoUni')?.hasError('minlength') && detalleForm.get('tipoUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Ranking</mat-label>
+            <input matInput formControlName="rankingUni">
+            <span class="error-message" *ngIf="detalleForm.get('rankingUni')?.hasError('minlength') && detalleForm.get('rankingUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Fundación</mat-label>
+            <input matInput formControlName="fundacionUni">
+            <span class="error-message" *ngIf="detalleForm.get('fundacionUni')?.hasError('minlength') && detalleForm.get('fundacionUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Rector</mat-label>
+            <input matInput formControlName="rectorUni">
+            <span class="error-message" *ngIf="detalleForm.get('rectorUni')?.hasError('minlength') && detalleForm.get('rectorUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="half-width">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="descripcionUni" rows="6"></textarea>
+            <span class="error-message" *ngIf="detalleForm.get('descripcionUni')?.hasError('minlength') && detalleForm.get('descripcionUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+        </div>
+        
+        <div class="separator"></div> 
+        
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="half-width">
+            <mat-label>Resumen</mat-label>
+            <textarea matInput formControlName="resumenUni" rows="6"></textarea>
+            <span class="error-message" *ngIf="detalleForm.get('resumenUni')?.hasError('minlength') && detalleForm.get('resumenUni')?.touched">Debe tener un mínimo de 5 caracteres</span>
+          </mat-form-field>
+        </div>
+        
+        
+    
+        <div class="form-row">
+          <div class="file-input">
+            <mat-label>Foto Logo</mat-label>
+            <br>
+            <span>Elegir una foto del Logo...</span>
+            <input type="file" accept="image/png, image/jpeg" (change)="seleccionaFotoLogo($event)">
+          </div>
+        
+          <div class="separator"></div> 
+        
+          <div class="file-input">
+            <mat-label>Foto de Fachada</mat-label>
+            <br>
+            <span>Elegir una foto de Fachada...</span>
+            <input type="file" accept="image/png, image/jpeg" (change)="seleccionaFotoFachada($event)">
+          </div>
+        </div>
+        
+      </div>
+    </form>
+    
+    <br>
+    <button *ngIf="!noExiste" mat-flat-button color="primary" (click)="confirmarActualizarUniversidad()">
+      Grabar
+    </button>
+    <span *ngIf="!noExiste"> | </span>
+    <button mat-flat-button color="accent" routerLink="/universidades/lista">Cancelar</button>
+    </div>
+</div>

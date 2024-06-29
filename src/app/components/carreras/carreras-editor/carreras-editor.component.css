@@ -1,0 +1,51 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #205896;
+  }
+  
+  .logo img {
+    height: 50px; /* Adjust the height as needed */
+  }
+  
+  .menu-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .menu-buttons button {
+    background-color: white;
+    border: 1px solid #ccc; /* Optional: Add border to distinguish the buttons */
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .menu-buttons button:hover {
+    background-color: #e0e0e0; /* Optional: Add hover effect */
+  }
+  
+  .Modo {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff; /* Adjust the background color as needed */
+  }

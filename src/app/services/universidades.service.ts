@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Universidades } from '../models/universidades';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,17 @@ export class UniversidadesService {
 
   eliminaUniversidades(id:number){
     return this.clienteHTTP.delete<Universidades>(this.ruta_servidor+"/"+this.recurso+"/"+id.toString());
+  }
+
+  actualizaFotoLogo(id:number, photo_logos: FormData){
+    return this.clienteHTTP.put<Universidades>(this.ruta_servidor+"/"+this.recurso+"/"+id.toString()+"/"+"photo_logo",photo_logos);
+  }
+  
+  actualizaFotoFachada(id:number, photo_fachadas: FormData){
+    return this.clienteHTTP.put<Universidades>(this.ruta_servidor+"/"+this.recurso+"/"+id.toString()+"/"+"photo_fachada",photo_fachadas);
+  }
+
+  getUniversidadById(id: number): Observable<Universidades> {
+    return this.clienteHTTP.get<Universidades>(`${this.ruta_servidor}/${this.recurso}/${id}`);
   }
 }

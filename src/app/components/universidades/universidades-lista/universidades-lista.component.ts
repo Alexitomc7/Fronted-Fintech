@@ -1,44 +1,40 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { Universidades } from '../../../models/universidades';
-import { MatPaginator } from '@angular/material/paginator';
 import { UniversidadesService } from '../../../services/universidades.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-universidades-lista',
   templateUrl: './universidades-lista.component.html',
-  styleUrl: './universidades-lista.component.css'
+  styleUrls: ['./universidades-lista.component.css']
 })
-export class UniversidadesListaComponent {
-  dsLista=new MatTableDataSource<Universidades>();
-  listaResultante:any;
-  displayedColumns: string[]=["id","nombre","direccion","paginaweb","email","telefono","descripcion","ubicacion","tipo","ranking","fundacion","rector"];
-  @ViewChild("paginator") paginator!: MatPaginator;
+export class UniversidadesListaComponent implements OnInit {
+  universidades: Universidades[] = [];
+  filteredUniversidades: Universidades[] = [];
+  searchText: string = '';
+  filterType: string = '';
+  errorMessage: any;
 
-  constructor(private universidadesService:UniversidadesService, private _snackBar: MatSnackBar, private dialogos: MatDialog){}
+  constructor(private universidadesService: UniversidadesService) { }
 
-  ngOnInit(){
-    this.cargaListaUniversidades();
-    //this.dsLista.paginator = this.paginator;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dsLista.filter = filterValue.trim().toLowerCase();
-  }
-
-
-  cargaListaUniversidades(){
-    this.universidadesService.listaUniversidades().subscribe({
-      next: (data:Universidades[])=>{
-        this.dsLista = new MatTableDataSource(data);
-        //this.dsLista.paginator = this.paginator;
+  ngOnInit(): void {
+    this.universidadesService.listaUniversidades().subscribe(
+      (data: Universidades[]) => {
+        this.universidades = data;
+        this.filteredUniversidades = data;
       },
-      error: (err)=>{
-        console.log(err);
+      (error) => {
+        console.error('Error fetching data', error);
+        this.errorMessage = 'Error fetching data';
       }
-    })
+    );
+  }
+
+  applyFilter(): void {
+    this.filteredUniversidades = this.universidades.filter(universidad => {
+      return (
+        (!this.searchText || universidad.nombre.toLowerCase().includes(this.searchText.toLowerCase())) &&
+        (!this.filterType || universidad.tipo === this.filterType)
+      );
+    });
   }
 }

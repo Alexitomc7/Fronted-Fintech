@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -9,8 +11,14 @@ export class InicioComponent {
   title = 'app';
   currentContent = 'Perfil';
 
-  changeContent(content: string) {
-    this.currentContent = content;
+  constructor(private usuarioService: UsuarioService, private router: Router) {}
+
+  logout() {
+    this.usuarioService.deslogearUsuario();
+    this.router.navigate(["/"]); 
   }
 
+  hayUsuarioLogeado() {
+    return this.usuarioService.getId() !== null;
+  }
 }
